@@ -1,0 +1,443 @@
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdftitle={Susliks in Miroslav July 2019},
+            pdfauthor={Fernando Mateos-Gonzalez},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\providecommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+\setlength{\droptitle}{-2em}
+
+  \title{Susliks in Miroslav July 2019}
+    \pretitle{\vspace{\droptitle}\centering\huge}
+  \posttitle{\par}
+    \author{Fernando Mateos-Gonzalez}
+    \preauthor{\centering\large\emph}
+  \postauthor{\par}
+    \date{}
+    \predate{}\postdate{}
+  
+
+\begin{document}
+\maketitle
+
+This report analises data from capture-recapture sessions during 15-19
+July 2019. The aim is to estimate population characteristics (mainly
+density) in Miroslav airport, to be able to extrapolate and apply to
+other areas of the Czech Republic.
+
+We will follow the protocols described here
+\url{https://www.otago.ac.nz/density/}
+
+Useful links: Example analysis
+\url{https://www.otago.ac.nz/density/pdfs/secr-tutorial.pdf}
+
+The following boxes include all the code and results to run the analyses
+in R. To install and run models in secr, you must download the package
+and load it. In the next box, we install and load the package secr, to
+do our analyses, and the package ``here'', to find files.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(secr)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## This is secr 3.2.1. For overview type ?secr
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(here)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## here() starts at D:/FPI/2019/CZ/SOUSLIK/susliks_july_2019
+\end{verbatim}
+
+Now we create the capthist, the file combining our captures with the
+trap locations:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{july <-}\StringTok{ }\KeywordTok{read.capthist}\NormalTok{(}\KeywordTok{here}\NormalTok{(}\StringTok{"data"}\NormalTok{, }\StringTok{"captures.txt"}\NormalTok{), }\KeywordTok{here}\NormalTok{(}\StringTok{"data"}\NormalTok{, }\StringTok{"traps.txt"}\NormalTok{), }\DataTypeTok{detector =} \StringTok{"proximity"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Session miroslav 
+## More than one detection per detector per occasion at binary detector(s)
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{summary}\NormalTok{(july)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Object class       capthist 
+## Detector type      proximity 
+## Detector number    20 
+## Average spacing    13.57938 m 
+## x-range            -623778.5 -623653.2 m 
+## y-range            -1187164 -1187091 m 
+## 
+## Counts by occasion 
+##                    1  2  3  4  5 Total
+## n                 23 27 16 19  8    93
+## u                 23 22 12 11  5    73
+## f                 58 10  5  0  0    73
+## M(t+1)            23 45 57 68 73    73
+## losses             0  0  0  0  0     0
+## detections        24 27 17 21  8    97
+## detectors visited 14 12 12 15  8    61
+## detectors used    20 20 20 20 20   100
+\end{verbatim}
+
+n number of distinct individuals detected on each occasion t u number of
+individuals detected for the first time on each occasion t f number of
+individuals detected on exactly t occasions M(t+1) cumulative number of
+detected individuals on each occasion t
+
+Now we use the plot method, which for capthist objects has additional
+arguments; we set tracks = TRUE to join consecutive captures of each
+individual. (use arguments gridl and gridsp to suppress the grid or vary
+its spacing, and border to ``zoom'' in the area where the traps are).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{par}\NormalTok{(}\DataTypeTok{mar =} \KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{)) }\CommentTok{# reduce margins}
+\KeywordTok{plot}\NormalTok{ (july, }\DataTypeTok{tracks =} \OtherTok{TRUE}\NormalTok{, }\DataTypeTok{gridsp =} \DecValTok{5}\NormalTok{,}\DataTypeTok{border =} \DecValTok{10}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in plot.capthist(july, tracks = TRUE, gridsp = 5, border = 10):
+## track for repeat detections on same occasion joins points in arbitrary
+## sequence
+\end{verbatim}
+
+\includegraphics{susliks_july_2019_files/figure-latex/unnamed-chunk-3-1.pdf}
+
+The most important insight from this figure is that individuals tend to
+be recaptured near their site of first capture. This is expected when
+the individuals of a species occupy home ranges. In SECR models the
+tendency for detections to be localised is reflected in the spatial
+scale parameter σ. Good estimation of σ and density D requires spatial
+recaptures (i.e.~captures at sites other than the site of first
+capture).
+
+Successive trap-revealed movements can be extracted with the moves
+function and summarised with hist:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{m <-}\StringTok{ }\KeywordTok{unlist}\NormalTok{(}\KeywordTok{moves}\NormalTok{(july))}
+\KeywordTok{par}\NormalTok{(}\DataTypeTok{mar =} \KeywordTok{c}\NormalTok{(}\FloatTok{3.2}\NormalTok{,}\DecValTok{4}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{), }\DataTypeTok{mgp =} \KeywordTok{c}\NormalTok{(}\FloatTok{2.1}\NormalTok{,}\FloatTok{0.6}\NormalTok{,}\DecValTok{0}\NormalTok{)) }\CommentTok{# reduce margins}
+\KeywordTok{hist}\NormalTok{(m, }\DataTypeTok{breaks =} \KeywordTok{seq}\NormalTok{(}\DecValTok{0}\OperatorTok{/}\DecValTok{2}\NormalTok{, }\DecValTok{30}\NormalTok{,}\DecValTok{2}\NormalTok{), }\DataTypeTok{xlab =} \StringTok{"Movement m"}\NormalTok{, }\DataTypeTok{main =} \StringTok{""}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{susliks_july_2019_files/figure-latex/unnamed-chunk-4-1.pdf}
+
+The function RPSV with option CC = TRUE provides a biased estimate of
+the spatial scale σ, ignoring the problem that movements are truncated
+by the edge of the grid:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{initialsigma <-}\StringTok{ }\KeywordTok{RPSV}\NormalTok{(july, }\DataTypeTok{CC =} \OtherTok{TRUE}\NormalTok{)}
+\KeywordTok{cat}\NormalTok{(}\StringTok{"Quick and biased estimate of sigma ="}\NormalTok{, initialsigma, }\StringTok{"m}\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Quick and biased estimate of sigma = 5.116154 m
+\end{verbatim}
+
+This estimate will be useful when we come to fit a model.
+
+Next we fit the simplest possible SECR model with function secr.fit.
+Setting trace = FALSE suppresses printing of intermediate likelihood
+evaluations; it doesn't hurt to leave it out. We save the fitted model
+with the name `fit'.
+
+To examine model output or extract particular results you should use one
+of the functions defined for the purpose. Technically, these are S3
+methods for the class `secr'. The key methods are print, plot, AIC,
+coef, vcov and predict. Append `.secr' when seeking help
+e.g.~?print.secr. Typing the name of the fitted model at the R prompt
+invokes the print method for secr objects and displays a more useful
+report.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fit <-}\StringTok{ }\KeywordTok{secr.fit}\NormalTok{ (july, }\DataTypeTok{buffer =} \DecValTok{4} \OperatorTok{*}\StringTok{ }\NormalTok{initialsigma, }\DataTypeTok{trace =} \OtherTok{FALSE}\NormalTok{,}\DataTypeTok{biasLimit =} \OtherTok{NA}\NormalTok{, }\DataTypeTok{verify =} \OtherTok{FALSE}\NormalTok{)}
+
+\KeywordTok{detector}\NormalTok{(}\KeywordTok{traps}\NormalTok{(july)) <-}\StringTok{ "proximity"}
+
+\NormalTok{fit}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## secr.fit(capthist = july, buffer = 4 * initialsigma, verify = FALSE, 
+##     biasLimit = NA, trace = FALSE)
+## secr 3.2.1, 12:40:05 22 Jul 2019
+## 
+## Detector type      proximity 
+## Detector number    20 
+## Average spacing    13.57938 m 
+## x-range            -623778.5 -623653.2 m 
+## y-range            -1187164 -1187091 m 
+## 
+## N animals       :  73  
+## N detections    :  97 
+## N occasions     :  5 
+## Mask area       :  0.9380393 ha 
+## 
+## Model           :  D~1 g0~1 sigma~1 
+## Fixed (real)    :  none 
+## Detection fn    :  halfnormal
+## Distribution    :  poisson 
+## N parameters    :  3 
+## Log likelihood  :  -198.4705 
+## AIC             :  402.9409 
+## AICc            :  403.2888 
+## 
+## Beta parameters (coefficients) 
+##            beta   SE.beta       lcl       ucl
+## D      5.560902 0.1998769  5.169151  5.952654
+## g0    -1.705310 0.2997312 -2.292772 -1.117848
+## sigma  1.825563 0.1107730  1.608452  2.042674
+## 
+## Variance-covariance matrix of beta parameters 
+##                  D          g0        sigma
+## D      0.039950765 -0.02430287 -0.007066575
+## g0    -0.024302868  0.08983879 -0.019885810
+## sigma -0.007066575 -0.01988581  0.012270666
+## 
+## Fitted (real) parameters evaluated at base levels of covariates 
+##        link   estimate SE.estimate          lcl         ucl
+## D       log 260.057389 52.50296021 175.76552388 384.7731007
+## g0    logit   0.153773  0.03900308   0.09172332   0.2464107
+## sigma   log   6.206287  0.68960371   4.99507138   7.7112017
+\end{verbatim}
+
+The report comprises these sections that you should identify: • function
+call and time stamp • summary of the data • description of the model,
+including the maximized log likelihood, Akaike's Information Criterion
+AIC • estimates of model coefficients (beta parameters) • estimates of
+variance-covariance matrix of the coefficients • estimates of the `real'
+parameters
+
+The last three items are generated by the coef, vcov and predict methods
+respectively. The final table of estimates is the most interesting, but
+it is derived from the other two. For our simple model there is one beta
+parameter for each real parameter (We can get from beta parameter
+estimates to real parameter estimates by applying the inverse of the
+link function e.g.: Dˆ = exp(βˆD), and similarly for confidence limits;
+standard errors require a delta-method approximation (Lebreton et
+al.~1992).)
+
+. The estimated density is 260 susliks per hectare, 95\% confidence
+interval 175-384 susliks per hectare . The other two real parameters
+jointly determine the detection function that you can easily plot with
+95\% confidence limits
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{par}\NormalTok{(}\DataTypeTok{mar =} \KeywordTok{c}\NormalTok{(}\DecValTok{4}\NormalTok{,}\DecValTok{4}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{)) }\CommentTok{# reduce margins}
+\KeywordTok{plot}\NormalTok{(fit, }\DataTypeTok{limits =} \OtherTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{susliks_july_2019_files/figure-latex/unnamed-chunk-7-1.pdf}
+
+The theory of SECR tells us that buffer width is not critical as long as
+it is wide enough that animals at the edge have effectively zero chance
+of appearing in our sample. The 4 suggestion is based on experience with
+half-normal detection models7. We check that for the present model with
+the function esa.plot. The estimated density8 has easily reached a
+plateau at the chosen buffer width (dashed red line):
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{esa.plot}\NormalTok{(fit)}
+\KeywordTok{abline}\NormalTok{(}\DataTypeTok{v =} \DecValTok{4} \OperatorTok{*}\StringTok{ }\NormalTok{initialsigma, }\DataTypeTok{lty =} \DecValTok{2}\NormalTok{, }\DataTypeTok{col =} \StringTok{'red'}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{susliks_july_2019_files/figure-latex/unnamed-chunk-8-1.pdf}
+
+\hypertarget{choosing-a-detection-function}{%
+\subsection{Choosing a detection
+function}\label{choosing-a-detection-function}}
+
+• detection probability declines with distance according to a
+half-normal curve
+
+We can try alternative shapes for the detection function (the decline in
+detection probability with distance). secr offers several different
+shapes of detection function (see the list at ?detectfn). We need to
+sort these out. All except ANN and HAN decline monotonically with
+distance. Three are only used for acoustic data (BSS, SS, SSS). The
+simplest UN is not available for maximum likelihood model fitting, and
+several are frankly exotic and almost never used (CHN, WEX, CLN, CG), as
+are ANN and HAN.
+
+That leaves the half-normal, negative exponential, and hazard rate
+functions (HN, EX, HR) These differ primarily in the length of their
+tails i.e.~the probability they assign to very distant detections. The
+half-normal makes distant detections very improbable, the negative
+exponential less so; The `hazard-rate' function requires a third
+parameter and potentially has a very long tail indeed. Fit each of these
+and assess the effect. We use a wider buffer to allow for longer tails
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fit.HN <-}\StringTok{ }\KeywordTok{secr.fit}\NormalTok{ (july, }\DataTypeTok{buffer =} \DecValTok{6} \OperatorTok{*}\StringTok{ }\NormalTok{initialsigma, }\DataTypeTok{detectfn =} \StringTok{'HN'}\NormalTok{, }\DataTypeTok{trace =} \OtherTok{FALSE}\NormalTok{, }\DataTypeTok{biasLimit =} \OtherTok{NA}\NormalTok{,}\DataTypeTok{verify =} \OtherTok{FALSE}\NormalTok{)}
+\NormalTok{fit.EX <-}\StringTok{ }\KeywordTok{secr.fit}\NormalTok{ (july, }\DataTypeTok{buffer =} \DecValTok{6} \OperatorTok{*}\StringTok{ }\NormalTok{initialsigma, }\DataTypeTok{detectfn =} \StringTok{'EX'}\NormalTok{, }\DataTypeTok{trace =} \OtherTok{FALSE}\NormalTok{, }\DataTypeTok{biasLimit =} \OtherTok{NA}\NormalTok{,}\DataTypeTok{verify =} \OtherTok{FALSE}\NormalTok{)}
+\NormalTok{fit.HR <-}\StringTok{ }\KeywordTok{secr.fit}\NormalTok{ (july, }\DataTypeTok{buffer =} \DecValTok{6} \OperatorTok{*}\StringTok{ }\NormalTok{initialsigma, }\DataTypeTok{detectfn =} \StringTok{'HR'}\NormalTok{, }\DataTypeTok{trace =} \OtherTok{FALSE}\NormalTok{, }\DataTypeTok{biasLimit =} \OtherTok{NA}\NormalTok{,}\DataTypeTok{verify =} \OtherTok{FALSE}\NormalTok{)}
+
+\NormalTok{fits <-}\StringTok{ }\KeywordTok{secrlist}\NormalTok{(}\DataTypeTok{HN =}\NormalTok{ fit.HN, }\DataTypeTok{EX =}\NormalTok{ fit.EX, }\DataTypeTok{HR =}\NormalTok{ fit.HR)}
+\KeywordTok{predict}\NormalTok{(fits)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $HN
+##        link    estimate SE.estimate          lcl         ucl
+## D       log 259.0853043 52.63609966 174.68563216 384.2628273
+## g0    logit   0.1534672  0.03899836   0.09145387   0.2461387
+## sigma   log   6.2218485  0.70141024   4.99187120   7.7548873
+## 
+## $EX
+##        link    estimate SE.estimate         lcl         ucl
+## D       log 283.4497841 65.34727060 181.4566459 442.7712180
+## g0    logit   0.3537688  0.09537974   0.1946272   0.5535912
+## sigma   log   3.9093957  0.55930652   2.9576508   5.1674034
+## 
+## $HR
+##        link    estimate SE.estimate          lcl         ucl
+## D       log 274.5515082 66.89732832 171.47583915 439.5868889
+## g0    logit   0.1805899  0.08336792   0.06807976   0.3993572
+## sigma   log   5.4087399  2.46704600   2.30695116  12.6810085
+## z       log   3.3653260  1.09322446   1.80892318   6.2608624
+\end{verbatim}
+
+When everything is done, we upload it to github following
+\url{https://happygitwithr.com/existing-github-first.html}
+
+
+\end{document}

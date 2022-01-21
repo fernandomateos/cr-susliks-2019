@@ -1,0 +1,134 @@
+---
+title: "Suslik Capture-Recapture Analysis Miroslav 2019"
+author: "Fernando Mateos-Gonzalez (ALKA Wildlife)"
+output: 
+    html_document: default
+    pdf_document: default
+    html_notebook: default
+    word_document: default
+---
+
+This report analises data from capture-recapture sessions in Miroslav during 17-18-19 April, 24-25 April and 15-19, 24 July 2019, in order to calculate the density of the population.
+
+```{r message=FALSE, warning=FALSE, include=FALSE, results="hide"}
+
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE) 
+```
+
+
+
+```{r results="hide"}
+library(secr)
+library(here)
+
+```
+
+## Analysis
+
+We used the data below, which combines the information obtained from our captures and the trap locations. The analysis was performed using the package 'secr' version 3.2.1 and  R `r getRversion()`. 
+
+
+
+```{r}
+
+multi <- read.capthist(here("data", "multicaptures.txt"), here("data", "traps.txt"), detector = "proximity")
+
+summary(multi)
+
+
+```
+
+*n number of distinct individuals detected on each occasion t  
+*u number of individuals detected for the first time on each occasion t  
+*f number of individuals detected on exactly t occasions  
+*M(t+1) cumulative number of detected individuals on each occasion t  
+
+
+### The following plots show the trap array and the consecutive captures of each individual.
+
+```{r}
+par(mfrow = c(1,1), mar = c(1,1,1,1)) # reduce margins
+plot (multi, tracks = TRUE, gridsp = 5,border = 10)
+      
+
+```
+
+The most important insight from these figures is that individuals tend to be recaptured near their site of first capture. This is expected when the individuals of a species occupy home ranges. In SECR models the
+tendency for detections to be localised is reflected in the spatial scale parameter σ. 
+
+### Successive trap-revealed movements and distances shown below
+
+```{r}
+m <- unlist(moves(multi))
+par(mar = c(3.2,4,1,1), mgp = c(2.1,0.6,0)) # reduce margins
+hist(m, breaks = seq(0/5, 50,5), xlab = "Movement m", main = "")
+```
+
+We will employ the estimate of the spatial scale σ from the July session (6.21) to fit the simplest possible SECR model with function secr.fit. 
+
+
+```{r}
+fit <- secr.fit (multi, buffer = 4 * 6.21, trace = FALSE,biasLimit = NA, verify = FALSE)
+
+detector(traps(multi)) <- "proximity"
+
+fit
+```
+
+
+The report comprises:  
+• function call and time stamp  
+• summary of the data  
+• description of the model, including the maximized log likelihood, Akaike’s Information Criterion AIC  
+• estimates of model coefficients (beta parameters)  
+• estimates of variance-covariance matrix of the coefficients  
+• estimates of the ‘real’ parameters  
+
+. The estimated density is 266 susliks per hectare, 95% confidence interval 196-360 susliks per hectare  
+. The other two real parameters jointly determine the detection function, plotted below with 95% confidence limits
+
+
+```{r}
+par(mar = c(4,4,1,1)) # reduce margins
+plot(fit, limits = TRUE)
+
+
+```
+
+The theory of SECR tells us that buffer width is not critical as long as it is wide enough that animals at
+the edge have effectively zero chance of appearing in our sample.We check that for the present model with the function esa.plot.  
+
+The estimated density has easily reached a plateau at the chosen buffer width (dashed red line):
+
+```{r}
+esa.plot(fit)
+abline(v = 4 * 6.21, lty = 2, col = 'red')
+
+```
+
+
+## Homeranges
+
+Mean distance in meters, between consecutive capture locations, pooled over individuals, per capture session (e.g. Efford 2004).
+
+```{r }
+dbar(multi, userdist = NULL, mask = NULL)
+
+```
+
+MMDM (for ‘Mean Maximum Distance Moved’) is the average maximum distance (in m) between detections of each individual i.e. the observed range length averaged over individuals (Otis et al. 1978). 
+
+```{r}
+
+MMDM(multi, min.recapt = 1, full = FALSE, userdist = NULL, mask = NULL)
+
+```
+
+
+RPSV (for ‘Root Pooled Spatial Variance’) is a measure of the 2-D dispersion of the locations at which individual animals are detected, pooled over individuals (cf Calhoun and Casby 1958, Slade and Swihart 1983).
+
+
+```{r}
+RPSV(multi, CC = FALSE)
+```
+
